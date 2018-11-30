@@ -6,6 +6,11 @@ html, body {
 	overflow-x: hidden;
 }
 
+body {
+	background-image: url("../images/band_cover_photo.jpg");
+	background-size: cover;
+}
+
 .navbar-light .navbar-brand {
 	color: #FFFFFF;
 }
@@ -101,3 +106,5 @@ html, body {
 	background: #125688;
 	color: white;
 }
+
+
