@@ -97,7 +97,7 @@
 						<div class="page-content">
 							<div class="contact-page">
 								<h1>Contact Us</h1>
-								<form id="contact-form" class="contact_format" method="get" action="../resources/php/contact.php" role="form">
+								<form id="contact-form" class="contact_format" method="POST" action="http://formspree.io/nickohlsen120485@gmail.com">
 									<div class="messages"></div>
 									<div class="controls">
 										<div class="row">
@@ -126,7 +126,7 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label for="form_email">Email *</label> <input
-														id="form_email" type="email" name="email"
+														id="form_email" type="email" name="_replyto"
 														class="form-control"
 														placeholder="Please enter your email *"
 														required="required" data-error="Valid email is required.">
