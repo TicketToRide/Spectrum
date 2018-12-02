@@ -11,6 +11,12 @@ body {
 	background-size: cover;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
 .navbar-light .navbar-brand {
 	color: #FFFFFF;
 }
@@ -67,7 +73,6 @@ body {
 	background-image: none;
 	background-image: none;
 	color: #ffffff;
-	text-shadow: 1px 1px 1px #000000;
 	height: -webkit-fill-available;
 }
 
@@ -105,6 +110,16 @@ body {
 .fa-instagram {
 	background: #125688;
 	color: white;
+}
+
+.card { 
+	font-family: Chelsea Market;
+	background-color: rgba(255, 255, 255, .01); 
+}
+.card-title {
+	border-radius: 25px;
+	background-color: rgba(221, 12, 12, .8);
+	text-align: center;
 }
 
 
