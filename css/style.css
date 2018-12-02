@@ -57,6 +57,7 @@ body {
 	color: #FFFFFF !important;
 	font-size: px;
 	font-family: Chelsea Market;
+	text-align: center;
 }
 
 .nxs-justify-content-center {
@@ -120,6 +121,28 @@ body {
 	border-radius: 25px;
 	background-color: rgba(221, 12, 12, .8);
 	text-align: center;
+}
+
+/* Contact Page Background and Header*/
+.contact-info-body  {
+	background-image: url("http://rockbandwordpresstheme.en.websitesexamples.com/wp-content/uploads/2014/10/contact.jpg?quality=100.3018113015540");
+	background-color: rgba(128, 128, 128, 0.7);
+	background-attachment: fixed;
+	background-position: left top; 
+	background-size: inherit;
+}
+
+.contact-page-header {
+	color: #FFFFFF !important;
+	font-size: 40px;
+	font-family: Chelsea Market;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	margin: auto;
+	margin-top: -100px;
+	line-height: 200px;
+	left: 0;
 }
 
 
