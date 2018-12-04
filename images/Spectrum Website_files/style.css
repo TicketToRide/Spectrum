@@ -22,11 +22,8 @@ body {
 
 .card-img-top {
     width: 100%;
-    height: auto;
-}
-
-.carousel-inner img {
-  margin: auto;
+    height: 20vw;
+    object-fit: cover;
 }
 
 .navbar-light .navbar-brand {
@@ -128,17 +125,8 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 10%;
+    width: 15%;
     height: auto;
-}
-
-.center-carousel {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    height: auto;
-
 }
 
 
