@@ -1,6 +1,6 @@
 # Spectrum
 
-Spectrum site is published at [https://tickettoride.github.io/Spectrum/] (https://tickettoride.github.io/Spectrum/)
+Spectrum site is published at(https://tickettoride.github.io/Spectrum/)
 
 A responsive website that will allow fans & clients the ability to directly connect with band.
 
