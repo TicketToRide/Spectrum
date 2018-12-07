@@ -16,7 +16,7 @@ body {
 	background-repeat: no-repeat;
 	color: #ffffff;
 	height: -webkit-fill-available;
-	background-image: url("../images/band_cover_photo.jpg");
+/*	background-image: url("../images/band_cover_photo.jpg");*/
 	background-repeat:no-repeat;
 	background-size:contain;
 	background-position:center;
@@ -216,3 +216,6 @@ body {
 .row.vertical-divider div[class^="col-"]:last-child {
   border-right: none;
 }
+
+
+
