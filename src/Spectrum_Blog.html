@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="../resources/js/newsletter.js"></script>
 
 <style>
 .fa {
@@ -21,116 +22,117 @@
 	text-decoration: none;
 }
 
-.blogDiv {
-	margin-left: 10%; 
-	width:80%; 
-	height: 80%;
+.iframe-container {
+	overflow: hidden;
+	padding-top: 56.25%;
+	position: relative;
 }
 
-.blog {
-	opacity: 0.7;
-	background-color: gainsboro;
+.iframe-container iframe {
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
-.blogHeader {
-	white-space:nowrap;color: black
+h1, p {
+	margin-bottom: 2rem;
 }
 
+h1 {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.7rem;
+}
+
+.wrapper {
+	background-color: #fff;
+	border-radius: 1rem;
+	margin: 0 auto;
+	max-width: 1020px;
+	padding: 2rem;
+	width: 100%;
+}
 </style>
 </head>
 
-
 <body>
-<div class="container"></div>
-<div class="color-background">
-	<div> 
+	<div class="container"></div>
+
+	<div>
 		<nav class="navbar navbar-expand-sm navbar-dark">
-		  	<a class="navbar-brand" href="#"><img src="../images/logo.png" width="50" height="50" alt=""></a>
-		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		    	<span class="navbar-toggler-icon"></span>
-		  	</button>
-		  	<div class="navbar-collapse collapse justify-content-center order-2" id="collapsibleNavbar">
-		    	<ul class="navbar-nav">
-		      		<li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
+			<a class="navbar-brand" href="#"><img src="../images/logo.png" width="50" height="50" alt=""></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse justify-content-center order-2"
+				id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="../index.html">HOME</a></li>
 					<li class="nav-item"><a class="nav-link" href="Spectrum_About.html">ABOUT</a></li>
 					<li class="nav-item"><a class="nav-link" href="Spectrum_Events.html">EVENTS</a></li>
 					<li class="nav-item"><a class="nav-link" href="Spectrum_Music.html">MUSIC</a></li>
 					<li class="nav-item"><a class="nav-link active" href="Spectrum_Blog.html">BLOG</a></li>
 					<li class="nav-item"><a class="nav-link" href="Spectrum_Contact.html">CONTACT</a></li>
-					<li class="nav-item"><a class="nav-link" href="Spectrum_Merchandise.html">MERCHANDISE</a></li>  
-		    	</ul>
-		  	</div>  
+					<li class="nav-item"><a class="nav-link" href="Spectrum_Merchandise.html">MERCHANDISE</a></li>
+				</ul>
+			</div>
 		</nav>
-		
-	</div>	
-	<div class="blogDiv">
-		<h1>All Blog Posts</h1>
-		<div class="list-group blog">
-			
-			<div id="container" style="white-space:nowrap">
-				<div style="display:inline;">
-					<img src="../images/author.jpg" style="width:15px; height:15px">
-				</div>
-			
-				<div style="display:inline" class="blogHeader"> 
-					By ALTCITIZEN 
-				</div>
-			</div>​
-			<a href="http://altcitizen.com/ron-gallo-interview/" 
-				class="list-group-item clearfix" target="_blank">
-				<h2 class="pull-right">
-					<small>Jun 7, 2018</small>
-				</h2>
-				<h2>Ron Gallo on “Stardust Birthday Party” and the exploration of self</h2>
-			</a>
-			
-			<div id="container" style="white-space:nowrap">
-				<div style="display:inline;">
-					<img src="../images/author.jpg" style="width:15px; height:15px">
-				</div>
-			
-				<div style="display:inline" class="blogHeader"> 
-					By ALTCITIZEN 
-				</div>
-			</div>​
-			<a href="http://altcitizen.com/interview-pale-waves-band/" 
-				class="list-group-item clearfix" target="_blank">
-				<h2 class="pull-right">
-					<small>May 31, 2018</small>
-				</h2>
-				<h2>Shouting over soundcheck with Pale Waves</h2>
-			</a>
-			
-			<div id="container" style="white-space:nowrap">
-				<div style="display:inline;">
-					<img src="../images/author.jpg" style="width:15px; height:15px">
-				</div>
-			
-				<div style="display:inline" class="blogHeader"> 
-					By ALTCITIZEN 
-				</div>
-			</div>​
-			<a href="http://altcitizen.com/watch-vypers-mr-girl/" 
-				class="list-group-item clearfix" target="_blank">
-				<h2 class="pull-right">
-					<small>May 24, 2018</small>
-				</h2>
-				<h2>Watch: Vypers “Mr Girl”</h2>
-			</a>
-		</div>
-	</div>	
 
-	<!-- Footer -->
-	<footer class="footer">
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">
-			<a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a> 
-			<a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a> 
-			<a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
+	</div>
+
+	<div class="wrapper">
+		<h1>All Blog Posts</h1>
+		<div class="iframe-container">
+			<iframe src="https://spectrum718606471.wordpress.com/blog/" frameborder="0"></iframe>
 		</div>
-		<!-- Copyright -->
+	</div>
+
+	<footer class="footer" style="padding-bottom: 20px;">
+		<!-- Footer -->
+		<div id="footer_bottom">
+			<div class="row vertical-divider" style="margin-top: 30px">
+				<div class="footer-copyright text-center py-3 col-xs-6">
+					<div class="col-md-12">
+						<a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a> 
+						<a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a> 
+						<a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<div class="col-md-12">
+						<p class="mailing-list-result-82311 hide-on-return alert" style="display: none;"></p>
+						<div class="mailing-list-form" id="list-82311">
+							<form id="form" class="needs-validation" novalidate="">
+								<h3 style="margin: .5em 0; font-size: 1em; line-height: 1.1; color: #FFFFFF;">Join our mailing list for the latest event information</h3>
+
+								<div class="control">
+									<div class="input email required member_email string">
+										<span class="input_field"> <input size="25" class="string email required" required="required" aria-required="" placeholder="Your email" type="email" name="member[email]" id="member_email" /></span>
+									</div>
+
+									<div class="actions">
+										<button type="submit" class="button positive">Sign up
+										</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
 	</footer>
 
+	<div id="success" class="modal fade bd-example-modal-sm" tabindex="-1"
+		role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<h1 style="color: #008000">Thanks! You have successfully signed up to the newsletter!</h1>
+			</div>
+		</div>
 	</div>
 
 </body>

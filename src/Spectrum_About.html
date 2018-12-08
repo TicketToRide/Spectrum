@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="../resources/js/newsletter.js"></script>
 
 <style>
 .fa {
@@ -114,21 +115,52 @@
 	
 
 	<!-- Footer -->
-	<footer class="footer">
+	<footer class="footer" style="padding-bottom: 20px;">
+		<!-- Footer -->
+		<div id="footer_bottom">
+			<div class="row vertical-divider" style="margin-top: 30px">
+				<div class="footer-copyright text-center py-3 col-xs-6">
+					<div class="col-md-12">
+						<a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a> 
+						<a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a> 
+						<a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
+					</div>
+				</div>
 
-		
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">
-			<a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a> 
-			<a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a> 
-			<a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
-		</div>
-		<!-- Copyright -->
+				<div class="col-xs-6">
+					<div class="col-md-12">
+						<p class="mailing-list-result-82311 hide-on-return alert" style="display: none;"></p>
+						<div class="mailing-list-form" id="list-82311">
+							<form id="form" class="needs-validation" novalidate="">
+								<h3 style="margin: .5em 0; font-size: 1em; line-height: 1.1; color: #FFFFFF;">Join our mailing list for the latest event information</h3>
+
+								<div class="control">
+									<div class="input email required member_email string">
+										<span class="input_field"> <input size="25" class="string email required" required="required" aria-required="" placeholder="Your email" type="email" name="member[email]" id="member_email" /></span>
+									</div>
+
+									<div class="actions">
+										<button type="submit" class="button positive">Sign up
+										</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
 	</footer>
-
 	</div>
-
 	
-
+	<div id="success" class="modal fade bd-example-modal-sm" tabindex="-1"
+		role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<h1 style="color: #008000">Thanks! You have successfully signed up to the newsletter!</h1>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
