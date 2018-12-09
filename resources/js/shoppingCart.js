@@ -2,6 +2,7 @@ $(document).ready(function () {
     
     let storageEnabled = checkStorage();
     let currentCart = getCartData();
+    updateCartStatus();
 
     $('#clearCartGoHome').click(function() {
         clearCartAndGoHome();
@@ -11,6 +12,18 @@ $(document).ready(function () {
         clearCart();
         window.location.replace("../index.html");
     };
+
+    function updateCartStatus() {
+        if (currentCart.length > 0) {
+            $("#continueCart").prop( "disabled", false );
+            $('#viewCartImage').attr('src', "../images/cart-full.png");
+            $('#viewCartImage').attr('title', "Total Item(s) " + currentCart.length);
+        } else {
+            $("#continueCart").prop( "disabled", true );
+            $('#viewCartImage').attr('title', "");
+            $('#viewCartImage').attr('src', "../images/cart-empty.png");
+        }
+    }
 
     $('#viewCart').on('shown.bs.modal', function () {
         hideAlert("alert-warning");
@@ -26,8 +39,7 @@ $(document).ready(function () {
             let itemPrice = $("div").children("." + itemClass).find(".itemPrice").text();
             let itemQty = $("div").children("." + itemClass).find(".itemQty").val();
             if (addToCart(itemName, itemPrice, itemQty)) {
-                // change cart image
-                $('#viewCartImage').attr('src', "../images/cart-full.png");
+                updateCartStatus();
                 showSuccess(`${itemQty} ${itemName} added to cart successfully`);
             } else {
                 showError('Unable to add to cart');
@@ -232,11 +244,7 @@ $(document).ready(function () {
         cartDiv.html("");
         cartDiv.append(table);
 
-        if (currentCart.length > 0) {
-            $("#continueCart").prop( "disabled", false );
-        } else {
-            $("#continueCart").prop( "disabled", true );
-        }
+        updateCartStatus();
 
         // remove from cart click handler
         $('a.cart-remove').click(function () {
