@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<script src="../resources/js/newsletter.js"></script>
-    
+    <script src="../resources/js/shoppingCart.js"></script>
+
     <style>
         .fa {
             padding: 5px;
@@ -24,7 +26,7 @@
         }
 
         .tileDiv {
-            margin-left: 10%
+            margin-left: 10%;
         }
 
         .tileRow {
@@ -40,12 +42,17 @@
             color: black;
         }
 
+        .scrollTable {
+            overflow-y: scroll;
+            height: 350px;
+        }        
     </style>
 </head>
 
 
 <body>
-    <div> 
+    <!-- Navbar -->
+    <div>
         <nav class="navbar navbar-expand-sm navbar-dark">
             <a class="navbar-brand" href="#"><img src="../images/logo.png" width="50" height="50" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -59,20 +66,49 @@
                     <li class="nav-item"><a class="nav-link" href="Spectrum_Music.html">MUSIC</a></li>
                     <li class="nav-item"><a class="nav-link" href="Spectrum_Blog.html">BLOG</a></li>
                     <li class="nav-item"><a class="nav-link" href="Spectrum_Contact.html">CONTACT</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Spectrum_Merchandise.html">MERCHANDISE</a></li>  
+                    <li class="nav-item"><a class="nav-link active" href="Spectrum_Merchandise.html">MERCHANDISE</a></li>
                 </ul>
-            </div>  
+            </div>
         </nav>
-        
-    </div>  
-    <center>
-        <h2 class="heading-title">SPECTRUM MERCHANDISE</h2>
-    </center>
-    <br />
+    </div>
 
+    <!-- Cart -->
+    <table class="tileDiv" style="margin:0 auto">
+        <tr class="tileRow" style="background-color:transparent">
+            <td>
+                <h4>SPECTRUM MERCHANDISE</h4>
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td style="background-color:gainsboro; opacity: 0.9">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#viewCart">
+                    <img src="../images/cart-empty.png" id="viewCartImage">
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Alerts -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="alert alert-success alert-dismissible" style="display:none">
+                <a href="#" class="close" data-toggle="modal" data-target="#viewCart">View Cart</a>
+                <strong>Success!</strong> <label id="successMessage"></label>
+            </div>
+            <div class="alert alert-warning  alert-dismissible" style="display:none">
+                <strong>Warning!</strong> <label id="errorMessage"></label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Tiles -->
     <div class="tileDiv">
         <div class="row tileRow">
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item1">
                 <div>
                     <table>
                         <tr>
@@ -88,28 +124,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee Love</h3>
+                        <h5 class="itemName">Logo Tee Love</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item1">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item2">
                 <div>
                     <table>
                         <tr>
@@ -125,28 +162,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee Black</h3>
+                        <h5 class="itemName">Logo Tee Black</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item2">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item3">
                 <div>
                     <table>
                         <tr>
@@ -162,28 +200,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee Sinclair</h3>
+                        <h5 class="itemName">Logo Tee Sinclair</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item3">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item4">
                 <div>
                     <table>
                         <tr>
@@ -199,28 +238,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee Spectrum</h3>
+                        <h5 class="itemName">Logo Tee Spectrum</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item4">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item5">
                 <div>
                     <table>
                         <tr>
@@ -236,28 +276,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee Heart</h3>
+                        <h5 class="itemName">Logo Tee Heart</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item5">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item6">
                 <div>
                     <table>
                         <tr>
@@ -273,28 +314,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Hats</h3>
+                        <h5 class="itemName">Logo Hats</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item6">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item7">
                 <div>
                     <table>
                         <tr>
@@ -310,28 +352,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Logo Tee White</h3>
+                        <h5 class="itemName">Logo Tee White</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item7">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item8">
                 <div>
                     <table>
                         <tr>
@@ -347,28 +390,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Spectrum Phone Cover</h3>
+                        <h5 class="itemName">Spectrum Phone Cover</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item8">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item9">
                 <div>
                     <table>
                         <tr>
@@ -384,28 +428,29 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Blue Phone Cover</h3>
+                        <h5 class="itemName">Blue Phone Cover</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item9">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 item10">
                 <div>
                     <table>
                         <tr>
@@ -421,23 +466,24 @@
                         </tr>
                     </table>
                     <div class="caption tileInfo">
-                        <h3>Spectrum Sticker</h3>
+                        <h5 class="itemName">Spectrum Sticker</h5>
                     </div>
-                    <!-- <table>
+                    <table>
                         <tr>
                             <td style="width:30%" class="tileInfo">
-                                $25
+                                <label class="itemPrice">$25</label>
                             </td>
                             <td style="width:40%">
-                                <input type="number" name="quantity" style="width:50%" value="1" min="1" step="1">
+                                <input class="itemQty" type="number" name="quantity" style="width:50%" value="1" min="1"
+                                    step="1">
                             </td>
                             <td style="width:30%">
-                                <a href="#" class="nav-link dropdown-item">
+                                <a href="#" class="nav-link dropdown-item cart-add" data-itemclass="item10">
                                     <img src="../images/cart-full.png" title="Add to cart">
                                 </a>
                             </td>
                         </tr>
-                    </table> -->
+                    </table>
                     <hr>
                 </div>
             </div>
@@ -445,50 +491,35 @@
         </div>
     </div>
 
+    <div class="modal fade" id="viewCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel" style="color:black">SPECTRUM SHOPPING CART</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body scrollTable">
+                    <div id="cartDiv" class="spectrum-viewcart">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="continueCart" class="btn btn-primary" onclick="window.location='Spectrum_Shipping.html';">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="footer" style="padding-bottom: 20px;">
-      <div id="footer_bottom">
-			<div class="row vertical-divider" style="margin-top: 30px">
-				<div class="footer-copyright text-center py-3 col-xs-6">
-					<div class="col-md-12">
-						<a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a> 
-						<a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a> 
-						<a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
-					</div>
-				</div>
-
-				<div class="col-xs-6">
-					<div class="col-md-12">
-						<p class="mailing-list-result-82311 hide-on-return alert" style="display: none;"></p>
-						<div class="mailing-list-form" id="list-82311">
-							<form id="form" class="needs-validation" novalidate="">
-								<h3 style="margin: .5em 0; font-size: 1em; line-height: 1.1; color: #FFFFFF;">Join our mailing list for the latest event information</h3>
-
-								<div class="control">
-									<div class="input email required member_email string">
-										<span class="input_field"> <input size="25" class="string email required" required="required" aria-required="" placeholder="Your email" type="email" name="member[email]" id="member_email" /></span>
-									</div>
-
-									<div class="actions">
-										<button type="submit" class="button positive">Sign up
-										</button>
-									</div>
-								</div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-			</div>
+    <footer class="footer" style="position: sticky;">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            <a href="https://www.facebook.com/spectrumband1/" class="fa fa-facebook"></a>
+            <a href="#https://www.youtube.com/user/WTPV" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/spectrumband/" class="fa fa-instagram"></a>
+        </div>
+        <!-- Copyright -->
     </footer>
-	
-	<div id="success" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<h1 style="color: #008000">Thanks! You have successfully signed up to the newsletter!</h1>
-			</div>
-		</div>
-	</div>
 
 </body>
 
