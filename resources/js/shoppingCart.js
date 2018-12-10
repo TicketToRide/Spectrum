@@ -1,10 +1,14 @@
 $(document).ready(function () {
-    
     let storageEnabled = checkStorage();
     let currentCart = getCartData();
-    updateCartStatus();
+    let prevTab = "";
+    let nextTab = "tabCart";
 
-    $('#clearCartGoHome').click(function() {
+    generateCart();
+
+    showTab(nextTab);
+
+    $('#clearCartGoHome').click(function () {
         clearCartAndGoHome();
     });
 
@@ -15,11 +19,11 @@ $(document).ready(function () {
 
     function updateCartStatus() {
         if (currentCart.length > 0) {
-            $("#continueCart").prop( "disabled", false );
+            $("#continueCart").prop("disabled", false);
             $('#viewCartImage').attr('src', "../images/cart-full.png");
             $('#viewCartImage').attr('title', "Total Item(s) " + currentCart.length);
         } else {
-            $("#continueCart").prop( "disabled", true );
+            $("#continueCart").prop("disabled", true);
             $('#viewCartImage').attr('title', "");
             $('#viewCartImage').attr('src', "../images/cart-empty.png");
         }
@@ -70,6 +74,64 @@ $(document).ready(function () {
         $('div.' + alertClass).hide();
     };
 
+    $('#prev').click(function () {
+        showTab(prevTab);
+    });
+
+    $('#next').click(function () {
+        showTab(nextTab);
+    });
+
+    function isFormValid() {
+        let isValid = true;
+        $('form#frmPayment').find('input').each(function(){
+            if($(this).prop('required')){
+                if (!$(this).val()) {
+                    isValid = false;
+                    return;
+                }
+            }
+        });
+        return isValid;    
+    }
+
+    function showTab(tabName) {
+        let tabId = '#' + tabName;
+        let currentIndex = $(tabId).data("tabindex");
+        let target = '#' + $(tabId).data("target");
+
+        prevTab = $(target).data("prevtab");
+        nextTab = $(target).data("nexttab");
+
+        if (currentIndex == "0") {
+            $('#prev').prop("disabled", true);
+            $('#next').prop("disabled", false);
+        } else if (currentIndex == "1") {
+            $('#prev').prop("disabled", false);
+            $('#next').prop("disabled", false);
+        } else if (currentIndex == "2") {
+            // // nextTab = prevTab;
+            if (!isFormValid()) {
+                showTab("tabPayment");
+                alert("Please enter valid Payment Information");
+                return false;                
+                // $('#prev').prop("disabled", false);
+                // $('#next').prop("disabled", true);
+            }
+        }
+
+        $('button.tablinks').css("border-bottom", "none");
+        $('button.tablinks').css("border-bottom-color", "");
+
+        $(target).css("border-bottom", "solid");
+        $(target).css("border-bottom-color", "red");
+
+        $('div.tabcontent').hide();
+        $(tabId).show();
+
+        return false;
+    };
+
     // add items to cart
     function addToCart(itemName, itemPrice, itemQty) {
         try {
@@ -82,19 +144,19 @@ $(document).ready(function () {
                     itemName: itemName,
                     itemPrice: itemPrice,
                     itemQty: itemQty,
-                    itemTotal: getItemtotal(itemPrice,  itemQty)
+                    itemTotal: getItemtotal(itemPrice, itemQty)
                 };
                 currentCart.push(shoppingCartItem);
             } else {
                 // if already added then update price and increment quantity
                 shoppingCartItem.itemPrice = itemPrice;
                 shoppingCartItem.itemQty = parseInt(shoppingCartItem.itemQty) + parseInt(itemQty);
-                shoppingCartItem.itemTotal = getItemtotal(itemPrice,  shoppingCartItem.itemQty);
+                shoppingCartItem.itemTotal = getItemtotal(itemPrice, shoppingCartItem.itemQty);
             }
             // save to local storage
             setCartData(currentCart);
         } catch (error) {
-            throw('Unable to add to cart at this time. ' + error.message);
+            throw ('Unable to add to cart at this time. ' + error.message);
         }
         return true;
     };
@@ -110,25 +172,25 @@ $(document).ready(function () {
             }
             generateCart();
         } catch (error) {
-            throw('Unable to remove from cart at this time. ' + error.message);
+            throw ('Unable to remove from cart at this time. ' + error.message);
         }
     };
 
     function clearCart() {
         currentCart = [];
         setCartData(currentCart);
-    }
+    };
 
     function getNextItemNo() {
-        let nextItemNo = 1;
+        let nextitemNo = 1;
         if (currentCart) {
-            nextItemNo = currentCart.length;
+            nextitemNo = currentCart.length;
         }
-        return nextItemNo;
+        return nextitemNo;
     };
 
     function getItemtotal(price, qty) {
-        return parseInt(price.replace(/^\D+/g, '')) * parseInt(qty);        
+        return parseInt(price.replace(/^\D+/g, '')) * parseInt(qty);
     };
 
     // checkk if local storage available
@@ -164,30 +226,30 @@ $(document).ready(function () {
 
     function generateCart() {
         //Create a HTML Table element.
-        let table = $("<table class='table table-striped' />");
+        let table = $("<table class='table table-hover' />");
         //table[0].border = "1";
 
-        let header = table[0].createTHead();        
- 
+        let header = table[0].createTHead();
+
         //Add the header row.
         let row = $(header.insertRow(-1));
-        let removeCell = $("<th scope='col' style='color:black' />");
+        let removeCell = $("<th scope='col' style='color:white' />");
         removeCell.html("<a href='#' class='cart-remove' data-itemno='-1'>X</a>");
         row.append(removeCell);
 
-        let nameHeaderCell = $("<th scope='col' style='color:black' />");
-        nameHeaderCell.html("Item Name");
+        let nameHeaderCell = $("<th scope='col' style='color:white' />");
+        nameHeaderCell.html("Event");
         row.append(nameHeaderCell);
 
-        let priceHeaderCell = $("<th scope='col' style='color:black' />");
-        priceHeaderCell.html("Price");
-        row.append(priceHeaderCell);
-
-        let qtyHeaderCell = $("<th scope='col' style='color:black' />");
+        let qtyHeaderCell = $("<th scope='col' style='color:white' />");
         qtyHeaderCell.html("Quantity");
         row.append(qtyHeaderCell);
 
-        let amtHeaderCell = $("<th scope='col' style='color:black; float:right' />");
+        let priceHeaderCell = $("<th scope='col' style='color:white' />");
+        priceHeaderCell.html("Price");
+        row.append(priceHeaderCell);
+
+        let amtHeaderCell = $("<th scope='col' style='color:white;text-align:right' />");
         amtHeaderCell.html("Amount");
         row.append(amtHeaderCell);
 
@@ -196,47 +258,48 @@ $(document).ready(function () {
         let cartTotal = 0;
         currentCart.forEach(item => {
             let row = $(body.insertRow(-1));
-            let removeCell = $("<td style='color:black' />");
+            let removeCell = $("<td style='color:white' />");
             removeCell.html("<a href='#' class='cart-remove' data-itemno=" + item.itemNo + ">X</a>");
             row.append(removeCell);
-    
-            let nameCell = $("<td style='color:black' />");
+
+            let nameCell = $("<td style='color:white' />");
             nameCell.html(item.itemName);
             row.append(nameCell);
 
-            let priceCell = $("<td style='color:black' />");
-            priceCell.html(item.itemPrice);
-            row.append(priceCell);
-
-            let qtyCell = $("<td style='color:black' />");
+            let qtyCell = $("<td style='color:white' />");
             qtyCell.html(item.itemQty);
             row.append(qtyCell);
 
-            let itemTotalCell = $("<td style='color:black; float:right' />");
+            let priceCell = $("<td style='color:white' />");
+            priceCell.html(item.itemPrice);
+            row.append(priceCell);
+
+            let itemTotalCell = $("<td style='color:white;text-align:right' />");
             itemTotalCell.html(`$${item.itemTotal}`);
             row.append(itemTotalCell);
             cartTotal += parseInt(item.itemTotal);
         });
 
-        let footer = table[0].createTFoot();        
+        let tableTotal = $("<table class='table table-hover' style='border-top:solid;border-top-color:white' />");
+        let footer = tableTotal[0].createTFoot();
         let frow = $(footer.insertRow(-1));
-        let cell0 = $("<td style='color:black' />");
+        let cell0 = $("<td style='color:white' />");
         cell0.html("&nbsp;");
         frow.append(cell0);
 
-        let cell1 = $("<td style='color:black' />");
+        let cell1 = $("<td style='color:white' />");
         cell1.html("&nbsp;");
         frow.append(cell1);
 
-        let cell2 = $("<td style='color:black' />");
+        let cell2 = $("<td style='color:white' />");
         cell2.html("&nbsp;");
         frow.append(cell2);
 
-        let cell3 = $("<td style='color:black' />");
+        let cell3 = $("<td style='color:white;text-align:right' />");
         cell3.html("Cart Total:");
         frow.append(cell3);
 
-        let cell4 = $("<td style='color:black; float:right' />");
+        let cell4 = $("<td style='color:white;text-align:right' />");
         cell4.html(`$${cartTotal}`);
         frow.append(cell4);
 
@@ -244,7 +307,17 @@ $(document).ready(function () {
         cartDiv.html("");
         cartDiv.append(table);
 
-        updateCartStatus();
+        let cartTotalDiv = $("#cartTotal");
+        cartTotalDiv.html("");
+        cartTotalDiv.append(tableTotal);
+
+        $("#cartTotalCheckout").text("Your Cart Total is $" + cartTotal);
+
+        if (currentCart.length > 0) {
+            $("#finalCheckout").prop("disabled", false);
+        } else {
+            $("#finalCheckout").prop("disabled", true);
+        }
 
         // remove from cart click handler
         $('a.cart-remove').click(function () {
@@ -257,4 +330,7 @@ $(document).ready(function () {
             return false;
         });
     };
-});    
+});
+
+
+
